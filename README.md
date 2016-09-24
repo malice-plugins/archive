@@ -1,5 +1,5 @@
-malice-zip
-==========
+malice-zip (WIP)
+================
 
 [![Circle CI](https://circleci.com/gh/maliceio/malice-zip.png?style=shield)](https://circleci.com/gh/maliceio/malice-zip) 
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org) 
