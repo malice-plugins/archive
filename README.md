@@ -5,7 +5,7 @@ malice-zip (WIP)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org) 
 [![Docker Stars](https://img.shields.io/docker/stars/malice/zip.svg)](https://hub.docker.com/r/malice/zip/) 
 [![Docker Pulls](https://img.shields.io/docker/pulls/malice/zip.svg)](https://hub.docker.com/r/malice/zip/) 
-[![Docker Image](https://img.shields.io/badge/docker image-55.48 MB-blue.svg)](https://hub.docker.com/r/malice/zip/)
+[![Docker Image](https://img.shields.io/badge/docker image-60.94 MB-blue.svg)](https://hub.docker.com/r/malice/zip/)
 
 Malice Zip/Compressed File Plugins
 
