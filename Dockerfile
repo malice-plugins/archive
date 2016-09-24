@@ -11,9 +11,9 @@ RUN apk-install -t .build-deps py-pip \
   && export PIP_NO_CACHE_DIR=off \
   && export PIP_DISABLE_PIP_VERSION_CHECK=on \
   && pip install --upgrade pip wheel \
-  && pip install sflock \
+  && pip install https://github.com/jbremer/sflock/zipball/master \
   && rm -rf /tmp/* \
-  && apk del --purge .build-deps  
+  && apk del --purge .build-deps
 
 WORKDIR /malware
 
