@@ -1,11 +1,7 @@
 malice-zip (WIP)
 ================
 
-[![Circle CI](https://circleci.com/gh/maliceio/malice-zip.png?style=shield)](https://circleci.com/gh/maliceio/malice-zip)
-[![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
-[![Docker Stars](https://img.shields.io/docker/stars/malice/zip.svg)](https://hub.docker.com/r/malice/zip/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/malice/zip.svg)](https://hub.docker.com/r/malice/zip/)
-[![Docker Image](https://img.shields.io/badge/docker image-60.94 MB-blue.svg)](https://hub.docker.com/r/malice/zip/)
+[![Circle CI](https://circleci.com/gh/maliceio/malice-zip.png?style=shield)](https://circleci.com/gh/maliceio/malice-zip) [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org) [![Docker Stars](https://img.shields.io/docker/stars/malice/zip.svg)](https://hub.docker.com/r/malice/zip/) [![Docker Pulls](https://img.shields.io/docker/pulls/malice/zip.svg)](https://hub.docker.com/r/malice/zip/) [![Docker Image](https://img.shields.io/badge/docker image-61.84 MB-blue.svg)](https://hub.docker.com/r/malice/zip/)
 
 Malice Zip/Compressed File Plugins
 
@@ -58,16 +54,16 @@ Run 'zip COMMAND --help' for more information on a command.
 
 This will output to stdout and POST to malice results API webhook endpoint.
 
-### Sample Output JSON:
+Sample Output
+-------------
+
+### JSON:
 
 ```json
-{
-  "zip": {
-  }
-}
+{ "zip": { } }
 ```
 
-### Sample Output STDOUT (Markdown Table):
+### STDOUT (Markdown Table):
 
 ---
 
@@ -75,19 +71,41 @@ This will output to stdout and POST to malice results API webhook endpoint.
 
 ---
 
-### To write results to [RethinkDB](https://rethinkdb.com)
+Documentation
+-------------
+
+### To write results to [ElasticSearch](https://www.elastic.co/products/elasticsearch)
 
 ```bash
 $ docker volume create --name malice
-$ docker run -d -p 28015:28015 -p 8080:8080 -v malice:/data --name rethink rethinkdb
-$ docker run --rm -v /path/to/malware:/malware:ro --link rethink malice/zip -t FILE
+$ docker run -d --name elastic \
+                -p 9200:9200 \
+                -v malice:/usr/share/elasticsearch/data \
+                 blacktop/elasticsearch
+$ docker run --rm --link elastic malice/zip FILE
 ```
 
-### Documentation
+### POST results to a webhook
+
+```bash
+$ docker run -v `pwd`:/malware:ro \
+             -e MALICE_ENDPOINT="https://malice.io:31337/scan/file" \
+             malice/zip --post evil.zip
+```
 
 ### Issues
 
-Find a bug? Want more features? Find something missing in the documentation? Let me know! Please don't hesitate to [file an issue](https://github.com/maliceio/malice-zip/issues/new) and I'll get right on it.
+Find a bug? Want more features? Find something missing in the documentation? Let me know! Please don't hesitate to [file an issue](https://github.com/maliceio/malice-zip/issues/new)
+
+### CHANGELOG
+
+See [`CHANGELOG.md`](https://github.com/maliceio/malice-zip/blob/master/CHANGELOG.md)
+
+### Contributing
+
+[See all contributors on GitHub](https://github.com/maliceio/malice-zip/graphs/contributors).
+
+Please update the [CHANGELOG.md](https://github.com/maliceio/malice-zip/blob/master/CHANGELOG.md) and submit a [Pull Request on GitHub](https://help.github.com/articles/using-pull-requests/).
 
 ### Credits
 
