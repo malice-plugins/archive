@@ -1,20 +1,18 @@
-FROM malice/alpine:tini
+FROM malice/alpine
 
-MAINTAINER blacktop, https://github.com/blacktop
+LABEL maintainer "https://github.com/blacktop"
 
-RUN apk-install p7zip unrar python py-setuptools file unzip tar gzip bzip2
-RUN apk-install -t .build-deps py-pip \
-  && set -x \
-  && echo "Install sflock..." \
+RUN apk --update add --no-cache p7zip unrar python py-setuptools file unzip tar gzip bzip2
+RUN apk --update add --no-cache \
+  && echo "===> Install sflock..." \
   && export PIP_NO_CACHE_DIR=off \
   && export PIP_DISABLE_PIP_VERSION_CHECK=on \
   && pip install --upgrade pip wheel \
   && pip install https://github.com/jbremer/sflock/zipball/master \
   && rm -rf /tmp/* \
-  && apk del --purge .build-deps
+  && apk del --purge py-pip
 
 WORKDIR /malware
 
-ENTRYPOINT ["gosu","nobody","/sbin/tini","--","sflock"]
-
+ENTRYPOINT ["su-exec","nobody","/sbin/tini","--","sflock"]
 CMD ["--help"]
