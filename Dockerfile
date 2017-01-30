@@ -2,8 +2,7 @@ FROM malice/alpine
 
 LABEL maintainer "https://github.com/blacktop"
 
-RUN apk --update add --no-cache p7zip unrar python py-setuptools file unzip tar gzip bzip2
-RUN apk --update add --no-cache \
+RUN apk --update add --no-cache p7zip unrar python py-setuptools file unzip tar gzip bzip2 py-pip \
   && echo "===> Install sflock..." \
   && export PIP_NO_CACHE_DIR=off \
   && export PIP_DISABLE_PIP_VERSION_CHECK=on \
